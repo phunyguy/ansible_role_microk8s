@@ -3,7 +3,7 @@
 
 - name: Refresh certs
   become: yes
-  shell: >
+  shell: |
     rm -rf /var/snap/microk8s/current/var/lock/no-cert-reissue
     microk8s refresh-certs --cert server.crt
     sleep 5
