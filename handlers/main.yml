@@ -3,4 +3,8 @@
 
 - name: Refresh certs
   become: yes
-  command: microk8s refresh-certs
+  shell: >
+    rm -rf /var/snap/microk8s/current/var/lock/no-cert-reissue
+    microk8s refresh-certs --cert server.crt
+    sleep 5
+    touch /var/snap/microk8s/current/var/lock/no-cert-reissue
