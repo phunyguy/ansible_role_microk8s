@@ -63,6 +63,10 @@
     - inventory_hostname != designated_host
     - inventory_hostname in groups[microk8s_group_HA]
 
+- name: sleep for 1 minute
+  ansible.builtin.pause:
+    minutes: 1
+
 - name: configure cluster addons
   include_tasks: addons.yml
   when: inventory_hostname == designated_host
